@@ -6,6 +6,7 @@ import org.acme.getting.started.repositories.PostRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -14,6 +15,7 @@ public class PostService {
     @Inject
     PostRepository repository;
 
+    @Transactional
     public void creatPost(Post post) {
         repository.creatPost(post);
     }
@@ -26,11 +28,13 @@ public class PostService {
         return repository.findPostById(id);
     }
 
+    @Transactional
     public void updatePost(Post post) {
         Parameters params = Parameters.with("date", post.getDate())
             .and("postTitle", post.getPostTitle())
             .and("postContent", post.getPostContent())
             .and("id", post.getId());
+        System.out.println(post);
         repository.updatePost(params);
     }
 
