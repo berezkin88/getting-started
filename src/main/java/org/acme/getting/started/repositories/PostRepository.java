@@ -23,7 +23,7 @@ public class PostRepository implements PanacheRepository<Post> {
     }
 
     public void updatePost(Parameters params) {
-        update("update from posts set date =?1 and set postTitle = ?2 and set postContent = ?3 where id = ?4", params);
+        update("date =:date, postTitle = :postTitle, postContent = :postContent where id = :id", params);
     }
 
     public void deletePost(Long id) {

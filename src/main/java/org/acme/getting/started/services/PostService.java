@@ -38,6 +38,7 @@ public class PostService {
         repository.updatePost(params);
     }
 
+    @Transactional
     public void deletePost(Long id) {
         repository.deletePost(id);
     }

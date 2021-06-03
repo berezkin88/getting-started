@@ -43,4 +43,11 @@ public class PostController {
         postService.updatePost(post);
         return Response.accepted().build();
     }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces
+    public void deletePost(@PathParam("id") Long id) {
+        postService.deletePost(id);
+    }
 }
